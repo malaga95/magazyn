@@ -49,8 +49,7 @@ while True:
                 buy_price = int(buy_price)
                 buy_count = input('podaj ilosc produktow :')
                 buy_count = int(buy_count)
-
-                
+      
                 if buy_id in storage:
                     storage[buy_id] += buy_count
                     account_operations_total.append(f'Zakup {buy_price*buy_count}, {buy_id}')
