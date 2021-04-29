@@ -5,6 +5,7 @@
 sale_list = []
 buy_list = []
 account_operations = []
+balance = 0
 #lists for storage
 sale_list_total = []
 buy_list_total = []
@@ -15,55 +16,94 @@ allowed_commands = ('saldo', 'sprzedaz', 'zakup', 'end')
 while True:
     command = input('Co chcesz wprowadzic ?')
     #Commands that are allowing program to work
+    
     if command in allowed_commands:
+            
             if command == 'saldo':
                 value = input ('Podaj wartosc operacji')
                 value = int(value)
                 commentary = input("Dodaj komentarz do transakcji na koncie")
+                balance += value
                 account_operations_total.append(f'saldo {value},{commentary}')
                 print(account_operations_total)
+                print(balance)
                 #Standard operation for sell and buy, making list with values got from user.
            
             elif command == 'sprzedaz':
-                ProductID = input('Podaj kod produktu :')
+                product_id = input('Podaj kod produktu :')
                 product_price = input('Podaj cene produktu :')
                 product_price = int(product_price)
+                
+                if product_price < 0:
+                    print("Podano ujemna cene sprzedazy, aby kupic uzyj komendzy zakup !")
+                    break
+                
                 sale_count = input('podaj ilosc produktow :')
                 sale_count = int(sale_count)
-
-                sale_list = [ProductID, product_price, sale_count]
+                
+                if sale_count < 0:
+                        print("wprowadzono niepoprawna wartość")
+                        break
+                
+                if sale_count in storage < 0:
+                        print("Chcesz sprzedac za duza ilosc produktow")
+                        break
+                sale_list =  [product_id, product_price, sale_count]
                 sale_list_total += sale_list
-                if ProductID in storage:
-                    storage[ProductID] -= sale_count
-                    account_operations_total.append(f'Sprzedaz {product_price*sale_count}, {ProductID}')
+                
+                if product_id in storage:
+                    
+                    storage [product_id] -= sale_count
+                    account_operations_total.append(f'Sprzedaz {product_price*sale_count},  {product_id}')
+                    balance += (product_price*sale_count)
+                    print(balance)
+
                 else:
                     print('brak produktu w bazie')
             elif command == 'zakup':
-                '''
-                                            zakup: program pobiera trzy linie: identyfikator produktu (str), cena jednostkowa (int) i liczba sztuk (int). 
-                                            Program odejmuje z salda cenę jednostkową pomnożoną przez liczbę sztuk. 
-                                            Jeśli saldo po zmianie jest ujemne, cena jest ujemna bądź liczba sztuk jest mniejsza od zero program zwraca błąd. 
-                                            Program podnosi stan magazynowy zakupionego towaru'''
                 buy_id = input('Podaj kod produktu :')
                 buy_price = input('Podaj cene produktu :')
                 buy_price = int(buy_price)
+
+                if buy_price < 0:
+                    print("Podano ujemna cene zakupu, aby sprzedac uzyj komendzy sprzedaz !")
+                    break
+
                 buy_count = input('podaj ilosc produktow :')
                 buy_count = int(buy_count)
-      
+                short = (balance - buy_count*buy_price) * -1
+
+                if balance < (buy_count*buy_price):
+                    print(f'Brakuje Ci {short} pieniedzy aby zakupic porzadana ilosc produktu')
+                    break
+
+                if buy_count <= 0:
+                    print("wprowadzono niepoprawna wartosc")
+                    break             
+                buy_list =  [buy_id, buy_price, buy_count]
+                buy_list_total += buy_list
+
                 if buy_id in storage:
                     storage[buy_id] += buy_count
                     account_operations_total.append(f'Zakup {buy_price*buy_count}, {buy_id}')
+                    balance -= (buy_price*buy_count)
+
                 else:
                     storage[buy_id] = buy_count
-                #buy_list = [ProductID, buy_price, buy_count]
+                    account_operations_total.append(f'Zakup {buy_price*buy_count}, {buy_id}')
+                    balance -= (buy_price*buy_count)
+
+                #buy_list =  product_id, buy_price, buy_count]
                 #buy_list_total =+ buy_list
                 print(storage)
-              
+                print(balance)            
+
             elif command == 'end':
 
                 print('Lista operacji przeprowadzonych na koncie : \n', account_operations_total)
-                print('Lista sprzedaży : \n', sale_list)
-                print('Lista zakupow :\n', buy_list)
+                print('Lista sprzedaży : \n', sale_list_total)
+                print('Lista zakupow :\n', buy_list_total)
+                print(balance)
 
     else :
         print("podano niepoprawna komende")
