@@ -1,4 +1,36 @@
+from os import write
+from typing import Text
 
+
+class Storage:
+    def __init__(self):
+        pass
+    
+    def save_(self, filename):
+        with open (self.filename, "w") as file:
+            pass        
+    def load_file(self, filename):
+        with open (self.filename, "r") as file:
+            pass
+    def check_file(self):
+        pass
+    
+
+
+
+class Product:
+    def status(self):
+        pass
+    
+    def buy(self):
+        pass
+
+    def sell(self):
+        pass
+
+
+class Command():
+    pass
 #New conception of task from segment 5. Depending on inputs from user
 #Willing to do whole task with list's had a problem that program didnt save the input.
 #lists for inputs
@@ -18,7 +50,11 @@ while True:
     #Commands that are allowing program to work
     
     if command in allowed_commands:
-            
+            with open ("sale_list.txt", "r") as file:
+                print(file.readlines())
+                #for line in file.readlines():
+                #    file.write(str(product_id) + ',' + (product_price) + ',' + (sale_count))
+ 
             if command == 'saldo':
                 value = input ('Podaj wartosc operacji')
                 value = int(value)
@@ -48,6 +84,10 @@ while True:
                 if sale_count in storage < 0:
                         print("Chcesz sprzedac za duza ilosc produktow")
                         break
+                with open ("sale_list.txt", "w") as file:
+                    for product in sale_list_total:
+                        file.write(str(product_id) + ',' + (product_price) + ',' + (sale_count))
+
                 sale_list =  [product_id, product_price, sale_count]
                 sale_list_total += sale_list
                 
@@ -106,5 +146,8 @@ while True:
                 print(balance)
 
     else :
-        print("podano niepoprawna komende")
+        print(f"podano niepoprawna komende, dozwolone komendy to {allowed_commands}")
         break
+with open ("sale_list.txt" "w") as file:
+    for product in sale_list_total:
+        file.write()
