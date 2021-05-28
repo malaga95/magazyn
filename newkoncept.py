@@ -1,9 +1,9 @@
 from os import write
 from typing import Text
 
-
 class Storage:
     def __init__(self):
+        self.storage =  []
         pass
     
     def save_(self, filename):
@@ -50,21 +50,23 @@ while True:
     #Commands that are allowing program to work
     
     if command in allowed_commands:
-            with open ("sale_list.txt", "r") as file:
-                print(file.readlines())
+            #with open ("sale_list.txt", "r") as file:
                 #for line in file.readlines():
                 #    file.write(str(product_id) + ',' + (product_price) + ',' + (sale_count))
  
             if command == 'saldo':
-                value = input ('Podaj wartosc operacji')
-                value = int(value)
-                commentary = input("Dodaj komentarz do transakcji na koncie")
-                balance += value
-                account_operations_total.append(f'saldo {value},{commentary}')
-                print(account_operations_total)
-                print(balance)
-                #Standard operation for sell and buy, making list with values got from user.
+                from .saldo import Account
+
            
+            #    value = input ('Podaj wartosc operacji')
+            #    value = int(value)
+            #    commentary = input("Dodaj komentarz do transakcji na koncie")
+            #    balance += value
+            #    account_operations_total.append(f'saldo {value},{commentary}')
+            #    print(account_operations_total)
+            #    print(balance)
+            #Standard operation for sell and buy, making list with values got from user.
+            
             elif command == 'sprzedaz':
                 product_id = input('Podaj kod produktu :')
                 product_price = input('Podaj cene produktu :')

@@ -1,2 +1,7 @@
 10,wplata
 10,wplata
+20000,wplata_wlasna
+20000,oskar
+20000,oskar
+120000,oskar
+
