@@ -1,3 +1,3 @@
 import sys
 import commands
-Stor = commands.Overview()
+Stor = commands.Storage()

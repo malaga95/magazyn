@@ -84,12 +84,20 @@ class Zakup:
     #                with open ('konto.txt', 'a') as file:
     #                    file.write({{-val} + ',' + 'Zakup' + {self.id}})
 
-                
+class Storage:
+    def __init__(self):
+        with open ('storage.txt', 'r') as file:
+            for line in file.readlines():
+                id = line.split(',')[0]
+                count = line.split(',')[1]
+                print(id,count)
+                if sys.argv[2:] == 'id':
+                    print(count)
 
         
 
 
-class Balance():
+class Balance:
     balance = 0
     def get_balance(self):
         with open ('konto.txt', 'r') as file:
@@ -102,7 +110,7 @@ class Balance():
         return self.balance
 
 
-class Storage():
+class Overview:
     def __init__(self):
         print("Lista zakupów :")
         with open ('buy_list.txt', 'r') as file:
