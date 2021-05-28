@@ -1,4 +1,3 @@
 product_id,product_price,product_count
 503,100,1500
-502,100,1150
-503,500,120
+

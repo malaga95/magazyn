@@ -1,4 +1,4 @@
 import sys
 import commands
 check = commands.Balance()
-print(check.check_balance())
+check.check_balance()

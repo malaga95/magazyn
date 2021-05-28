@@ -22,7 +22,7 @@ class Sprzedaz:
         #price = self.product_price
         #count = self.product_count
     
-    def add_line(self, id, price, count):
+    def add_line(self):
         self.id = sys.argv[2]
         self.price = sys.argv[3]
         self.count = sys.argv[4]
@@ -42,21 +42,15 @@ class Zakup:
         self.id = sys.argv[2]
         self.price = sys.argv[3]
         self.count = sys.argv[4]
-        #self.check_balance()
-        #id = self.product_id
-        #price = self.product_price
-        #count = self.product_count
     
     def add_line(self):
         if self.id != 'buy_list.txt':
             print('Wybrano złą nazwe pliku, aby przeprowadzic zakup uzyj pliku buy_list.txt')
-        with open (str(sys.argv[1]), 'r') as file:
-            for line in file.readlines()[1:]:
-                print(line)
+        #with open (str(sys.argv[1]), 'r') as file:
+        #    for line in file.readlines()[1:]:
+        #        print(line)
         with open (str(sys.argv[1]), 'a') as file:
             file.write(self.id + ',' + self.price + ',' + self.count + '\n')
-                #self.sprzedaz.append(line)
-                #print(self.sprzedaz)
     
     def check_storage():
         pass
