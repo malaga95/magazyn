@@ -1,36 +1,5 @@
 from os import write
 from typing import Text
-
-class Storage:
-    def __init__(self):
-        self.storage =  []
-        pass
-    
-    def save_(self, filename):
-        with open (self.filename, "w") as file:
-            pass        
-    def load_file(self, filename):
-        with open (self.filename, "r") as file:
-            pass
-    def check_file(self):
-        pass
-    
-
-
-
-class Product:
-    def status(self):
-        pass
-    
-    def buy(self):
-        pass
-
-    def sell(self):
-        pass
-
-
-class Command():
-    pass
 #New conception of task from segment 5. Depending on inputs from user
 #Willing to do whole task with list's had a problem that program didnt save the input.
 #lists for inputs

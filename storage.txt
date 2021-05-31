@@ -1,2 +1,4 @@
 product_id,product_count
-503,250 
+503,250
+504,100
+505,80

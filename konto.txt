@@ -4,4 +4,10 @@
 20000,oskar
 20000,oskar
 120000,oskar
-
+54000,503
+-100000,Buy of product505
+-100000,Buy of product505
+-20000,Buy of product505
+-20000,Buy of product505
+54000,503
+-20000,Buy of productbuy_list.txt

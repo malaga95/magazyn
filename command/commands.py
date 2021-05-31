@@ -39,7 +39,7 @@ class Sprzedaz:
 class Zakup:
     balance = 0
     def __init__(self):
-        self.id = sys.argv[2]
+        self.id = sys.argv[1]
         self.price = sys.argv[3]
         self.count = sys.argv[4]
     
@@ -84,9 +84,9 @@ class Storage:
             for line in file.readlines():
                 id = line.split(',')[0]
                 count = line.split(',')[1]
-                print(id,count)
-                if sys.argv[2:] == 'id':
-                    print(count)
+                for arg in sys.argv:
+                    if id == arg:
+                        print(count)
 
         
 

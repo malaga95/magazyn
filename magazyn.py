@@ -1,3 +1,3 @@
 import sys
-import commands
-Stor = commands.Storage()
+from command.commands import Storage
+Stor = Storage()

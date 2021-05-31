@@ -3,9 +3,11 @@
                 #self.sprzedaz.append(line)
                 #print(self.sprzedaz)
 import sys
-import commands
+from command.commands import Account,Sprzedaz
 #from .commands import Sprzedaz
-sell = commands.Sprzedaz()
+sell = Sprzedaz()
+acc = Account()
 value = (int(sys.argv[3]) * int(sys.argv[4]))
-comment = f'Sell of product : {sys.argv2}'
-commands.Account.add_to_file(value,comment)
+comment = sys.argv[2]
+print(value,comment)
+acc.add_to_file(value,comment)

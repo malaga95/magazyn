@@ -1,3 +1,3 @@
 import sys
-import commands
-Stor = commands.Overview()
+from command.commands import Overview
+Stor = Overview()
